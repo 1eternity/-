@@ -117,14 +117,17 @@ public class ZhihuUserProfileLayout extends RelativeLayout {
         float dY;
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                mOnCollapsingListener.dispatchTouchEvent(event);
                 mVelocityTracker.clear();
                 mVelocityTracker.addMovement(event);
                 mTouchDownX = currentTouchX;
                 mTouchDownY = currentTouchY;
                 mLastTouchY = currentTouchY;
                 mScroller.forceFinished(true);
+
                 break;
             case MotionEvent.ACTION_UP:
+                mOnCollapsingListener.dispatchTouchEvent(event);
                 if (isTouchScrollVertical(transX, transY)) {
                     mVelocityTracker.computeCurrentVelocity(1000, mViewConfiguration.getScaledMaximumFlingVelocity());
                     float v = -mVelocityTracker.getYVelocity();
@@ -140,8 +143,10 @@ public class ZhihuUserProfileLayout extends RelativeLayout {
                         postInvalidate();
                     }
                 }
+
                 break;
             case MotionEvent.ACTION_MOVE:
+                mOnCollapsingListener.dispatchTouchEvent(event);
                 mVelocityTracker.addMovement(event);
                 dY = mLastTouchY - currentTouchY;
                 boolean isTouchScrollUp = dY > 0;
@@ -154,6 +159,7 @@ public class ZhihuUserProfileLayout extends RelativeLayout {
                     }
                 }
                 mLastTouchY = currentTouchY;
+
                 break;
             default:
                 break;
@@ -161,6 +167,21 @@ public class ZhihuUserProfileLayout extends RelativeLayout {
         super.dispatchTouchEvent(event);
         return true;
     }
+
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//        switch (event.getAction()){
+//            case MotionEvent.ACTION_DOWN:
+//
+//                Log.i(TAG, "onTouchEvent: 哈哈哈哈哈");
+//                break;
+//            case MotionEvent.ACTION_UP:
+//                mOnCollapsingListener.dispatchTouchEvent(event);
+//                Log.i(TAG, "onTouchEvent: 哈哈哈哈哈11111111111");
+//                break;
+//        }
+//        return super.onTouchEvent(event);
+//    }
 
     @Override
     public void computeScroll() {
@@ -235,6 +256,7 @@ public class ZhihuUserProfileLayout extends RelativeLayout {
 
     public interface OnCollapsingListener {
         void onCollapsing(float progress);
+        void dispatchTouchEvent(MotionEvent event);
     }
 
     public interface NestedScrollViewProvider {

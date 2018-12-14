@@ -1,72 +1,383 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
-
-    <com.drizzle.zhihuuserprofile.widget.ZhihuUserProfileLayout
-        android:id="@+id/user_profile_md_layout"
+    android:orientation="vertical"
+   >
+    <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:collapsing_offset="96dp">
+        android:layout_weight="9">
 
-        <RelativeLayout
-            android:id="@+id/user_profile_header"
-            android:layout_width="match_parent"
-            android:layout_height="256dp">
-
-            <ImageView
-                android:id="@+id/user_profile_header_image"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@mipmap/ic_launcher"/>
-
-            <View
-                android:id="@+id/user_profile_header_cover"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/colorPrimary"/>
-
-            <ImageView
-                android:id="@+id/user_profile_avatar"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_centerInParent="true"
-                android:src="@mipmap/ic_launcher_round"/>
-
-            <TextView
-                android:id="@+id/user_profile_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/user_profile_avatar"
-                android:layout_centerHorizontal="true"
-                android:text="@string/custom_title"
-                android:textColor="@android:color/white"/>
-
-            <android.support.design.widget.TabLayout
-                android:id="@+id/user_profile_tablayout"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_alignParentBottom="true"/>
-        </RelativeLayout>
-
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/user_profile_viewpager"
+        <com.drizzle.zhihuuserprofile.widget.ZhihuUserProfileLayout
+            android:id="@+id/user_profile_md_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/user_profile_header">
-        </android.support.v4.view.ViewPager>
+            app:collapsing_offset="222dp">
 
-    </com.drizzle.zhihuuserprofile.widget.ZhihuUserProfileLayout>
+            <RelativeLayout
+                android:id="@+id/user_profile_header"
+                android:layout_width="match_parent"
+                android:layout_height="452dp">
+
+                <ImageView
+                    android:id="@+id/user_profile_header_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/overproof" />
+
+                <!--<View-->
+                <!--android:id="@+id/user_profile_header_cover"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:background="@color/colorPrimary"/>-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/user_profile_avatar"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="9">
+
+                        <com.drizzle.zhihuuserprofile.view.WaveView
+                            android:id="@+id/wave_button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <RelativeLayout
+                            android:id="@+id/relativeLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:id="@+id/text1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_margin="10dp"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="PM2.5"
+                                    android:textColor="#FFFFFFFF"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="(微克)"
+                                    android:textColor="#FFFFFFFF"
+                                    android:textSize="10sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/pm2_5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/text1"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/home_pm2_5_value1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:alpha="0.5"
+                                    android:text="0"
+                                    android:textColor="#FFFFFFFF"
+                                    android:textSize="40sp" />
+
+                                <TextView
+                                    android:id="@+id/home_pm2_5_value2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textColor="#FFFFFFFF"
+                                    android:textSize="40sp" />
+                            </LinearLayout>
 
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/user_profile_toolbar"
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/pm2_5"
+                                android:layout_margin="12dp"
+                                android:gravity="center_horizontal"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="空气质量："
+                                    android:textColor="#FFFFFFFF"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/home_AQI_value"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="—"
+                                    android:textColor="#FFFFFFFF"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_weight="0.5"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="18dp"
+                            android:layout_marginLeft="26dp"
+                            android:src="@drawable/indoor" />
+
+                        <LinearLayout
+                            android:id="@+id/user_profile_tablayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <LinearLayout
+                                    android:id="@+id/temperature"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="温度"
+                                        android:textColor="#FFFFFF"
+                                        android:textSize="12sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignRight="@id/temperature"
+                                        android:text="(c)"
+                                        android:textColor="#FFFFFF"
+                                        android:textSize="10sp" />
+                                </LinearLayout>
+
+                                <TextView
+                                    android:id="@+id/temperature_value"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/temperature"
+                                    android:layout_centerHorizontal="true"
+                                    android:text="—"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="15sp" />
+
+                                <View
+                                    android:layout_width="0.4dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentRight="true"
+                                    android:background="#FFFFFF"></View>
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <LinearLayout
+                                    android:id="@+id/humidity"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="湿度"
+                                        android:textColor="#FFFFFF"
+                                        android:textSize="12sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignRight="@id/humidity"
+                                        android:text="(%)"
+                                        android:textColor="#FFFFFF"
+                                        android:textSize="10sp" />
+                                </LinearLayout>
+
+                                <TextView
+                                    android:id="@+id/humidity_value"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/humidity"
+                                    android:layout_centerHorizontal="true"
+                                    android:text="—"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="15sp" />
+
+                                <View
+                                    android:layout_width="0.4dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentRight="true"
+                                    android:background="#FFFFFF"></View>
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <LinearLayout
+                                    android:id="@+id/co2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="CO2"
+                                        android:textColor="#FFFFFF"
+                                        android:textSize="12sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignRight="@id/co2"
+                                        android:text="(ppm)"
+                                        android:textColor="#FFFFFF"
+                                        android:textSize="10sp" />
+                                </LinearLayout>
+
+                                <TextView
+                                    android:id="@+id/co2_value"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/co2"
+                                    android:layout_centerHorizontal="true"
+                                    android:text="—"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="15sp" />
+
+                                <View
+                                    android:layout_width="0.4dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentRight="true"
+                                    android:background="#FFFFFF"></View>
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <LinearLayout
+                                    android:id="@+id/tvoc"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="TVOC"
+                                        android:textColor="#FFFFFF"
+                                        android:textSize="12sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignRight="@id/tvoc"
+                                        android:text="(ppm)"
+                                        android:textColor="#FFFFFF"
+                                        android:textSize="10sp" />
+                                </LinearLayout>
+
+                                <TextView
+                                    android:id="@+id/tvoc_value"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/tvoc"
+                                    android:layout_centerHorizontal="true"
+                                    android:text="—"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="15sp" />
+
+                                <View
+                                    android:layout_width="2dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentRight="true"
+                                    android:background="#00000000"></View>
+                            </RelativeLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/user_profile_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/user_profile_header"></android.support.v4.view.ViewPager>
+        </com.drizzle.zhihuuserprofile.widget.ZhihuUserProfileLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/radioGroup"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        app:title="@string/app_name">
-    </android.support.v7.widget.Toolbar>
-</FrameLayout>
+        android:layout_height="110dp"
+        android:layout_weight="1"
+
+       android:background="@drawable/radiobutton_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/starting_up_state"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="开机"
+            android:textColor="#979797"
+            android:textSize="13sp" />
+
+        <RadioButton
+            android:id="@+id/aptitude_state"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="智能"
+            android:textColor="#979797"
+            android:textSize="13sp" />
+    </LinearLayout>
+</LinearLayout>
